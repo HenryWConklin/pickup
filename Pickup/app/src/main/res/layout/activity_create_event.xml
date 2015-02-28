@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical" >
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:id="@+id/eventNameTR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:paddingLeft="5dp"
+   			 android:paddingRight="5dp">
+
+            <TextView
+                android:id="@+id/eventNameTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="Event Name Changeme"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/eventNameET"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:background="grey"></EditText>
+
+
+               <!-- <requestFocus />  -->
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/eventDateTR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/eventLocationTR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/eventLocationTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="Location Changme"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/eventLocationET"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:background="grey changeme"
+                android:inputType="text" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/dateTR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date:"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/datePickerTR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="140dp"
+                android:layout_margin="-2dp"
+                android:scaleX="0.75"
+                android:scaleY="0.75" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/startTimeTR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/startTimeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Time:"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/endTimeTR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TimePicker
+                android:id="@+id/startTimeTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="-2dp"
+                android:scaleX="0.65"
+                android:scaleY="0.65" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tablerow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/endTimeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="End Time:"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tablerow6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TimePicker
+                android:id="@+id/endTimeTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="-2dp"
+                android:scaleX="0.65"
+                android:scaleY="0.65" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/eventDescriptionTR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="Description changeme"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/eventDescriptionET"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:background="grey changeme"
+                android:inputType="textMultiLine"
+                android:lines="5" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/difficultyLevelTR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/beginnerCB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="28"
+                android:text="Beginner String changeme" />
+
+            <CheckBox
+                android:id="@+id/intermediateCB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="36"
+                android:text="Intermediate String Changeme" />
+
+            <CheckBox
+                android:id="@+id/expertCB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="26"
+                android:text="Expert String changeme" />
+        </TableRow>
+        
+         <TableRow
+            android:id="@+id/privacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/privacybox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Make event private" />
+
+           
+        </TableRow>
+
+        <Button
+            android:id="@+id/enterNewEventButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="enter string changeme" />
+    </TableLayout>
+
+</ScrollView>
