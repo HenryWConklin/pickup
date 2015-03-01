@@ -33,7 +33,7 @@ public class MainActivityList extends ActionBarActivity {
 
         // create a list view of stuff
         lv = (ListView) findViewById(R.id.dayListView);
-
+        
         ArrayAdapter<Event> arrayAdapter = new ArrayAdapter<Event>(this,
                 android.R.layout.simple_list_item_1, eventList);
 
