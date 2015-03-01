@@ -11,8 +11,6 @@
 # Python byte code
 *.pyc
 
-# django migrated files
-migrations/
 
 # Generated files
 bin/
@@ -30,3 +28,5 @@ proguard/
 
 # Log Files
 *.log
+
+*.sqlite3
