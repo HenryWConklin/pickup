@@ -1,7 +1,10 @@
 package hackuva15.pickup;
 
+import android.app.Activity;
 import android.content.Intent;
+
 import android.location.LocationListener;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,11 +52,13 @@ public class MainActivityList extends ActionBarActivity {
 //                R.layout.listview_item_row, eventListArray);
 
         // add stuff to list view
-        eventList.add(new Event());
-        eventList.add(new Event());
-        eventList.add(new Event());
+//        eventList.add(new Event());
+//        eventList.add(new Event());
+//        eventList.add(new Event());
         refresh();
-        Collections.sort(eventList, new TimeComparator());
+
+        //sort by time
+        //Collections.sort(eventList, new TimeComparator());
 
         GPSTracker tracker = new GPSTracker(this.getApplicationContext());
         eventList = sortByLocation(eventList, tracker.getLatitude(), tracker.getLongitude());
@@ -101,6 +107,7 @@ public class MainActivityList extends ActionBarActivity {
             if(id == R.id.refresh) {
                 Intent intent = new Intent(MainActivityList.this, MainActivityList.class);
                 startActivity(intent);
+                finish();
             }
             if (id == R.id.map_view) {
                 Intent intent = new Intent(MainActivityList.this, MainActivity.class);
@@ -113,25 +120,63 @@ public class MainActivityList extends ActionBarActivity {
     }
 
     public static ArrayList<Event> sortByLocation(ArrayList<Event> eventList,double latitude, double longitude) {
-        TreeMap<Double, Event> tMap = new TreeMap<Double, Event>();
-        ArrayList<Event> ret = new ArrayList<Event>();
         for(int i = 0; i < eventList.size(); i++) {
             Event temp = eventList.get(i);
             Double latDiff = latitude - temp.getLatitude();
             Double longDiff = longitude - temp.getLongitude();
 
-            Double distance = Math.sqrt(latDiff * latDiff + longDiff * longDiff);
+            eventList.get(i).setDistance(Math.sqrt(latDiff * latDiff + longDiff * longDiff));
 
-            tMap.put(distance, temp);
         }
+        Collections.sort(eventList);
 
-        for(Event e: tMap.values()) {
-            ret.add(tMap.get(e));
-        }
-        //reverse so that the least distance is first
-        Collections.reverse(ret);
-
-        return ret;
+        return eventList;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case (ActivityTwoRequestCode): {
+                if (resultCode == Activity.RESULT_OK) {
+
+                    Event temp = (Event) data.getExtras().get("retEvent");
+
+                    //start async task
+                    //final JSONTask task = new JSONTask();
+
+                    //task.execute(url);
+
+                    PostEventTask task = new PostEventTask();
+                    task.execute(temp);
+                    try {
+                        boolean result = task.get();
+                        if (!result) {
+                            Toast.makeText(this, "Server error, try again later", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                    refresh();
+
+
+                }
+                break;
+            }
+        }
     }
+
+    public void toAdd(View v) {
+        Intent intent = new Intent(MainActivityList.this, CreateEvent.class);
+        startActivityForResult(intent, ActivityTwoRequestCode);
+
+    }
+
+    public void toMap(View v) {
+        Intent intent = new Intent(MainActivityList.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+}

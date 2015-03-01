@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -43,7 +44,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 
-public class MainActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
+public class MainActivity extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
     private static final int ActivityTwoRequestCode = 0;
 
@@ -95,6 +96,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         if (id == R.id.refresh) {
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
 
 
@@ -123,7 +125,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             MarkerOptions marker = new MarkerOptions();
             marker = marker.position(new LatLng(e.getLatitude(),e.getLongitude()))
                     .title(e.getName())
-                    .snippet(e.getSportType() + "\n" + e.getBeginningTime().toString());
+                    .snippet(e.getSportType() + "\n" + Utils.getDateString(e.getBeginningTime()));
             myMap.addMarker(marker);
         }
     }
@@ -157,6 +159,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         Intent intent = new Intent(MainActivity.this, CreateEvent.class);
+        intent.putExtra("latitude", latLng.latitude);
+        intent.putExtra("longitude", latLng.longitude);
         startActivityForResult(intent, ActivityTwoRequestCode);
 
     }
@@ -173,8 +177,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 if (resultCode == Activity.RESULT_OK) {
                     // TODO Extract the data returned from the child Activity.
                     Event temp = (Event) data.getExtras().get("retEvent");
-                    Toast.makeText(getApplicationContext(), temp.toString(),
-                            Toast.LENGTH_LONG).show();
+
                     //start async task
                     //final JSONTask task = new JSONTask();
 
@@ -183,7 +186,10 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                     PostEventTask task = new PostEventTask();
                     task.execute(temp);
                     try {
-                        Log.wtf("Post Result: ", "" + task.get());
+                        boolean result = task.get();
+                        if (!result) {
+                            Toast.makeText(this, "Server error, try again later",Toast.LENGTH_LONG).show();
+                        }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -196,6 +202,16 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
             }
         }
+    }
+
+    public void toAdd(View v) {
+        Intent intent = new Intent(MainActivity.this, CreateEvent.class);
+        startActivityForResult(intent, ActivityTwoRequestCode);
+    }
+
+    public void toList(View v) {
+        Intent intent = new Intent(MainActivity.this, MainActivityList.class);
+        startActivity(intent);
     }
 
 //    public class JSONTask extends AsyncTask<String, Void, String> {

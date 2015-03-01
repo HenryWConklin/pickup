@@ -17,6 +17,6 @@
         <item>Soccer</item>
         <item>Other</item>
     </string-array>
-    <string name="title_activity_main_activity_list">MainActivityList</string>
+    <string name="title_activity_main_activity_list">Pickup</string>
     <string name="title_activity_event_info">EventInfo</string>
 </resources>

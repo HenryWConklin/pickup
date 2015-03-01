@@ -9,7 +9,7 @@ import java.util.Date;
 
 
 
-public class Event implements Parcelable {
+public class Event implements Parcelable, Comparable<Event> {
 
     private String name;
     private Date beginningTime;
@@ -17,6 +17,8 @@ public class Event implements Parcelable {
     private double latitude;
     private double longitude;
     private String sportType;
+    private double distance;
+
 
     private int mData;
 
@@ -25,6 +27,7 @@ public class Event implements Parcelable {
         this.beginningTime = new Date(2015,2,2,10,0,0);
         this.latitude = 3.3;
         this.longitude = 2.1;
+        this.distance = 0;
         this.sportType = "Hackerball";
 
     }
@@ -34,11 +37,33 @@ public class Event implements Parcelable {
         this.beginningTime = beginningTime;
         this.latitude=latitude;
         this.longitude=longitude;
+        this.distance=0;
         this.sportType= sportType;
     }
 
     public String toString() {
-        return name + beginningTime.toString() + "(" + sportType + ")";
+        return "\n" + name + "\n" + Utils.getDateString(beginningTime) + "\n" + sportType + "\n";
+    }
+
+    public double getDistance() {
+        return this.distance;
+    }
+
+    public int compareTo(Event e) {
+        if(e.getDistance() == 0.0 || this.getDistance() == 0.0) {
+            return -1;
+        }
+        else if(e.getDistance() > this.getDistance()) {
+            return 1;
+        }
+        else if(e.getDistance() < this.getDistance()) {
+            return -1;
+        }
+        return 0;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 
 

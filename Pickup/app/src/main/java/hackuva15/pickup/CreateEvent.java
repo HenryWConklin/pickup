@@ -17,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -29,6 +30,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import javax.xml.datatype.Duration;
 
 
 public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, View.OnFocusChangeListener, View.OnClickListener {
@@ -52,6 +55,9 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
 
         MapFragment mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        selectedLocation = new LatLng(
+                getIntent().getDoubleExtra("latitude", 0.0),
+                getIntent().getDoubleExtra("longitude",0.0));
 
         nameInput = (EditText)findViewById(R.id.event_name_input);
 
@@ -60,7 +66,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         timeInput.setOnClickListener(this);
 
         date = new Date(System.currentTimeMillis());
-        timeInput.setText(date.toString());
+        timeInput.setText(Utils.getDateString(date));
 
         sportType = (Spinner)findViewById(R.id.event_sport_type_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.event_sport_types, android.R.layout.simple_spinner_item);
@@ -109,9 +115,10 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         googleMap.setOnMapLongClickListener(this);
 
         map = googleMap;
-        if (selectedLocation == null) {
+        if (selectedLocation.equals(new LatLng(0,0))) {
             selectedLocation = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
         }
+        map.addMarker(new MarkerOptions().position(selectedLocation));
     }
 
     @Override
@@ -127,11 +134,11 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
     }
 
     public void submit(View v) {
-        if (nameInput.getText().equals("")){
+        if (nameInput.getText().toString().equals("")){
+            Toast toast = Toast.makeText(this, "Please enter a name for your event", Toast.LENGTH_LONG);
+            toast.show();
             nameInput.requestFocus();
-            if (selectedLocation == null) {
 
-            }
             return;
         }
 
@@ -169,7 +176,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
                             datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
                             timePicker.getCurrentHour(), timePicker.getCurrentMinute());
                     date = (Date)calendar.getTime();
-                    timeInput.setText(date.toString());
+                    timeInput.setText(Utils.getDateString(date));
                 }
             });
             d.show();
