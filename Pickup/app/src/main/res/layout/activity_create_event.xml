@@ -5,7 +5,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="hackuva15.pickup.CreateEvent">
+    tools:context="hackuva15.pickup.CreateEvent"
+    android:id="@+id/">
 
     <EditText
         android:layout_width="fill_parent"
@@ -15,7 +16,7 @@
         android:inputType="textShortMessage"
         android:imeOptions="actionNext"
         android:hint="@string/event_name"
-        android:nextFocusDown="@+id/event_time_input"/>
+        />
 
 
     <EditText
@@ -23,10 +24,15 @@
         android:layout_height="wrap_content"
         android:editable="false"
         android:ems="10"
-        android:id="@id/event_time_input"
+        android:id="@+id/event_time_input"
         android:hint="@string/event_time"
         android:nextFocusUp="@id/event_name_input"
         />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/event_sport_type_spinner"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -53,4 +59,5 @@
 
 
     </FrameLayout>
+
 </LinearLayout>

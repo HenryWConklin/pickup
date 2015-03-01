@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -34,6 +36,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
     EditText nameInput;
     EditText timeInput;
     GoogleMap map;
+    Spinner sportType;
 
     LatLng selectedLocation;
     Date date;
@@ -57,6 +60,13 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         timeInput.setOnClickListener(this);
 
         date = new Date(System.currentTimeMillis());
+        timeInput.setText(date.toString());
+
+        sportType = (Spinner)findViewById(R.id.event_sport_type_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.event_sport_types, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sportType.setAdapter(adapter);
+
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -132,7 +142,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         String location = "TODO";//.getText().toString();
         Double latitude = selectedLocation.latitude;
         Double longitude = selectedLocation.longitude;
-        String sportType = "TODO";//.getText().toString();
+        String sportType = (String)this.sportType.getSelectedItem();//.getText().toString();
         String description = "TODO";//.getText().toString();
 
         Event retEvent = new Event(name, beginningTime, endTime, location, latitude, longitude, sportType, description);
