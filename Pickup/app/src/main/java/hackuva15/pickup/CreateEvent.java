@@ -1,41 +1,47 @@
 package hackuva15.pickup;
 
-import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class MainActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
+public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, TextView.OnEditorActionListener {
 
-    private GoogleApiClient apiClient;
-    private GoogleMap myMap;
+    EditText nameInput;
+    GoogleMap map;
+    LatLng selectedLocation;
+    GoogleApiClient apiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_create_event);
 
         buildGoogleApiClient();
 
         MapFragment mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        nameInput = (EditText)findViewById(R.id.event_name_input);
+        nameInput.setOnEditorActionListener(this);
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -44,11 +50,10 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 .build();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_create_event, menu);
         return true;
     }
 
@@ -67,7 +72,6 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         return super.onOptionsItemSelected(item);
     }
 
-    // Do pre-display map stuff here
     @Override
     public void onMapReady(GoogleMap googleMap) {
         googleMap.setMyLocationEnabled(true);
@@ -82,16 +86,37 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         if (myLocation != null)
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myLocation.getLatitude(), myLocation.getLongitude()), 16));
 
+        googleMap.setOnMapClickListener(this);
         googleMap.setOnMapLongClickListener(this);
 
-        myMap = googleMap;
+        map = googleMap;
+        if (selectedLocation == null) {
+            selectedLocation = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
+        }
     }
 
+    @Override
+    public void onMapClick(LatLng latLng) {
+        map.clear();
+        map.addMarker(new MarkerOptions().position(latLng));
+        selectedLocation = latLng;
+    }
 
-    // Create event
     @Override
     public void onMapLongClick(LatLng latLng) {
-        startActivity(new Intent(this, CreateEvent.class));
-        myMap.addMarker(new MarkerOptions().position(latLng).title("Sports!"));
+        onMapClick(latLng);
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
+            submit(v);
+            return true;
+        }
+        return false;
+    }
+
+    public void submit(View v) {
+        // Submit event
     }
 }
