@@ -24,6 +24,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.apache.http.HttpResponse;
@@ -38,6 +39,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
@@ -97,6 +99,26 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    public void refresh() {
+        GetListTask task = new GetListTask();
+        task.execute();
+        try {
+            eventList = task.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        myMap.clear();
+        for (Event e : eventList) {
+            MarkerOptions marker = new MarkerOptions();
+            marker = marker.position(new LatLng(e.getLatitude(),e.getLongitude()))
+                    .title(e.getName())
+                    .snippet(e.getSportType() + e.getBeginningTime().toString());
+        }
+    }
+
     // Do pre-display map stuff here
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -115,6 +137,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setOnMapLongClickListener(this);
 
         myMap = googleMap;
+        refresh();
     }
 
 
@@ -146,10 +169,10 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                     //start async task
                     //final JSONTask task = new JSONTask();
 
-                    String url = "http://239.39.32.23:8000/games/new_game";//MUST ADJUST URL
                     //task.execute(url);
 
-
+                    PostEventTask task = new PostEventTask();
+                    task.execute(temp);
 
 
 
