@@ -53,10 +53,15 @@ public class Event implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(mData);
-        dest.writeStringArray(new String[] {this.name,
-                this.beginningTime.toString(), Double.toString(latitude),
-                Double.toString(longitude), sportType,
-                });
+        dest.writeString(name);
+        dest.writeDouble(latitude);
+        dest.writeDouble(longitude);
+        dest.writeLong(beginningTime.getTime());
+        dest.writeString(sportType);
+//        dest.writeStringArray(new String[] {this.name,
+//                this.beginningTime.toString(), Double.toString(latitude),
+//                Double.toString(longitude), sportType,
+//                });
 
     }
 
@@ -74,6 +79,11 @@ public class Event implements Parcelable {
     // with it's values
     private Event(Parcel in) {
         mData = in.readInt();
+        name = in.readString();
+        latitude = in.readDouble();
+        longitude = in.readDouble();
+        beginningTime = new Date(in.readLong());
+        sportType = in.readString();
     }
 
     public String getName() {
