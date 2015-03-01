@@ -1,21 +1,19 @@
 package hackuva15.pickup;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -128,20 +126,20 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         // Submit event
 
         //intent with parcelable latitude/longitude object
-        String name = __.getText().toString();
-        String beginningTime = LocalDateTime.of();
-        String endTime = LocalDateTime.of();
-        String location = __.getText().toString();
-        Double latitude = selectedLocation.getLatitude();
-        Double longitude = selectedLocation.getLongitude();
-        String sportType = __.getText().toString();
-        String description = __.getText().toString();
+        String name = nameInput.getText().toString();
+        Date beginningTime = date;
+        Date endTime = date;
+        String location = "TODO";//.getText().toString();
+        Double latitude = selectedLocation.latitude;
+        Double longitude = selectedLocation.longitude;
+        String sportType = "TODO";//.getText().toString();
+        String description = "TODO";//.getText().toString();
 
         Event retEvent = new Event(name, beginningTime, endTime, location, latitude, longitude, sportType, description);
         Intent i = new Intent();
 
         i.putExtra("retEvent", retEvent);
-        setResult(Activit.RESULT_OK, i);
+        setResult(Activity.RESULT_OK, i);
         finish();
 
     }
