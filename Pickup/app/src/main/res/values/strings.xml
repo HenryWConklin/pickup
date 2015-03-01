@@ -8,4 +8,13 @@
     <string name="event_create">Create</string>
     <string name="event_time">Time</string>
     <string name="event_date">Date</string>
+    <string name="event_description">Description</string>
+    <string-array name="event_sport_types">
+        <item>Football</item>
+        <item>Basketball</item>
+        <item>Baseball</item>
+        <item>Ultimate Frisbee</item>
+        <item>Soccer</item>
+        <item>Other</item>
+    </string-array>
 </resources>

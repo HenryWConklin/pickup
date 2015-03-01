@@ -1,21 +1,21 @@
 package hackuva15.pickup;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -31,11 +31,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, View.OnFocusChangeListener {
+public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, View.OnFocusChangeListener, View.OnClickListener {
 
     EditText nameInput;
     EditText timeInput;
     GoogleMap map;
+    Spinner sportType;
 
     LatLng selectedLocation;
     Date date;
@@ -56,8 +57,16 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
 
         timeInput = (EditText)findViewById(R.id.event_time_input);
         timeInput.setOnFocusChangeListener(this);
+        timeInput.setOnClickListener(this);
 
         date = new Date(System.currentTimeMillis());
+        timeInput.setText(date.toString());
+
+        sportType = (Spinner)findViewById(R.id.event_sport_type_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.event_sport_types, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sportType.setAdapter(adapter);
+
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -128,19 +137,19 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
 
         //intent with parcelable latitude/longitude object
         String name = nameInput.getText().toString();
-        String beginningTime = LocalDateTime.of();
-        String endTime = LocalDateTime.of();
-        String location = __.getText().toString();
-        Double latitude = selectedLocation.getLatitude();
-        Double longitude = selectedLocation.getLongitude();
-        String sportType = __.getText().toString();
-        String description = __.getText().toString();
 
-        Event retEvent = new Event(name, beginningTime, endTime, location, latitude, longitude, sportType, description);
+        Date beginningTime = date;
+        Double latitude = selectedLocation.latitude;
+        Double longitude = selectedLocation.longitude;
+        String sportType = (String)this.sportType.getSelectedItem();//.getText().toString();
+
+
+
+        Event retEvent = new Event(name, beginningTime,latitude, longitude, sportType);
         Intent i = new Intent();
 
         i.putExtra("retEvent", retEvent);
-        setResult(Activit.RESULT_OK, i);
+        setResult(Activity.RESULT_OK, i);
         finish();
 
     }
@@ -159,11 +168,16 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
                     calendar.set(
                             datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
                             timePicker.getCurrentHour(), timePicker.getCurrentHour());
-                    date = calendar.getTime();
+                    date = (Date)calendar.getTime();
                     timeInput.setText(date.toString());
                 }
             });
             d.show();
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        onFocusChange(v,true);
     }
 }

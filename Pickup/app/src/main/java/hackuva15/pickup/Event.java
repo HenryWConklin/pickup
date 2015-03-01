@@ -1,38 +1,37 @@
-package com.josephtobin.pickup;
+package hackuva15.pickup;
 
 import java.util.ArrayList;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import java.time.LocalDateTime;
-import java.time.Month;
+import java.util.Date;
 
-private String name;
-private LocalDateTime beginningTime;
-private LocalDateTime endTime;
-private String location;
-private double latitude;
-private double longitude;
-private String sportType;
-private description;
+
+
 
 public class Event implements Parcelable {
+
+    private String name;
+    private Date beginningTime;
+
+    private double latitude;
+    private double longitude;
+    private String sportType;
+
+    private int mData;
+
     public Event() {
         this.name = "UVA Wahoo Hackerball";
-        this.beginningTime = LocalDateTime.of(2015,Month.FEBRUARY, 2, 6, 5, 30);
-        this.endTime = LocalDateTime.of(2015,Month.FEBRUARY, 2, 10, 6, 32);
-        this.location = "lambeth";
+        this.beginningTime = new Date(2015,2,2,10,0,0);
         this.latitude = 3.3;
         this.longitude = 2.1;
         this.sportType = "Hackerball";
 
     }
 
-    public Event(String name, LocalDateTime beginningTime, LocalDateTime endTime, String location, double latitude, double longitude, String sportType, String description) {
+    public Event(String name, Date beginningTime,double latitude, double longitude, String sportType) {
         this.name = name;
         this.beginningTime = beginningTime;
-        this.endTime=endTime;
-        this.location=location;
         this.latitude=latitude;
         this.longitude=longitude;
         this.sportType= sportType;
@@ -50,20 +49,11 @@ public class Event implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(mData);
-        dest.writeStringArray(this.name,
-                this.beginningTime.toString(), this.endTime.toString(),
-                this.location, Double.toDouble(latitude),
-                Double.toDouble(longitude), sportType,
-                description });
+        dest.writeStringArray(new String[] {this.name,
+                this.beginningTime.toString(), Double.toString(latitude),
+                Double.toString(longitude), sportType,
+                });
 
-
-        dest.writeStringArray(new String[] { Integer.toString(id), this.name,
-                this.participants.toString(), this.host.toString(),
-                Integer.toString(startHour), Integer.toString(startMinute),
-                Integer.toString(endHour), Integer.toString(endMinute),
-                location, Boolean.toString(beginner),
-                Boolean.toString(intermediate), Boolean.toString(experienced),
-                description });
     }
 
     public static final Parcelable.Creator<Event> CREATOR = new Parcelable.Creator<Event>() {
@@ -82,4 +72,53 @@ public class Event implements Parcelable {
         mData = in.readInt();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getBeginningTime() {
+        return beginningTime;
+    }
+
+    public void setBeginningTime(Date beginningTime) {
+        this.beginningTime = beginningTime;
+    }
+
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getSportType() {
+        return sportType;
+    }
+
+    public void setSportType(String sportType) {
+        this.sportType = sportType;
+    }
+
+
+    public int getmData() {
+        return mData;
+    }
+
+    public void setmData(int mData) {
+        this.mData = mData;
+    }
 }
