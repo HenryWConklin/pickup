@@ -32,7 +32,8 @@ public class PostEventTask extends AsyncTask<Event, Void, Boolean> {
     protected Boolean doInBackground(Event... params) {
         Event event = params[0];
         HttpClient client = new DefaultHttpClient();
-        HttpPost post = new HttpPost("http://52.11.31.74/games/new_game/");
+        HttpPost post = new HttpPost("http://172.25.89.85:8000/games/new_game/");
+//        HttpPost post = new HttpPost("http://52.11.31.74/games/new_game/");
         JSONObject object = new JSONObject();
         try {
 //            object.put("game_name", event.getName());
@@ -58,8 +59,8 @@ public class PostEventTask extends AsyncTask<Event, Void, Boolean> {
             pairs.add(new BasicNameValuePair("sport_type", event.getSportType()));
             pairs.add(new BasicNameValuePair("game_time", Long.toString(event.getBeginningTime().getTime())));
             post.setEntity(new UrlEncodedFormEntity(pairs));
-//            post.setHeader("Accept", "application/json");
-//            post.setHeader("Content-type", "application/json");
+            post.setHeader("Accept", "application/json");
+            post.setHeader("Content-type", "application/json");
 
 
             HttpResponse response = client.execute(post);
