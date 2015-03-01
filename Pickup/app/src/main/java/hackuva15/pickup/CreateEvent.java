@@ -31,7 +31,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, View.OnFocusChangeListener {
+public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, View.OnFocusChangeListener, View.OnClickListener {
 
     EditText nameInput;
     EditText timeInput;
@@ -56,6 +56,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
 
         timeInput = (EditText)findViewById(R.id.event_time_input);
         timeInput.setOnFocusChangeListener(this);
+        timeInput.setOnClickListener(this);
 
         date = new Date(System.currentTimeMillis());
     }
@@ -165,5 +166,10 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
             });
             d.show();
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        onFocusChange(v,true);
     }
 }
