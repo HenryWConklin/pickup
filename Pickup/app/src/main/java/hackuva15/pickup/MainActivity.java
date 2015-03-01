@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -95,6 +96,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
         if (id == R.id.refresh) {
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
 
 
@@ -157,6 +159,8 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
 
 
         Intent intent = new Intent(MainActivity.this, CreateEvent.class);
+        intent.putExtra("latitude", latLng.latitude);
+        intent.putExtra("longitude", latLng.longitude);
         startActivityForResult(intent, ActivityTwoRequestCode);
 
     }
@@ -196,6 +200,16 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
                 break;
             }
         }
+    }
+
+    public void toAdd(View v) {
+        Intent intent = new Intent(MainActivity.this, CreateEvent.class);
+        startActivityForResult(intent, ActivityTwoRequestCode);
+    }
+
+    public void toList(View v) {
+        Intent intent = new Intent(MainActivity.this, MainActivityList.class);
+        startActivity(intent);
     }
 
 //    public class JSONTask extends AsyncTask<String, Void, String> {

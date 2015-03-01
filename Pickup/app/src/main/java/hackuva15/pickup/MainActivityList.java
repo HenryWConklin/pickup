@@ -33,7 +33,7 @@ public class MainActivityList extends ActionBarActivity {
 
         // create a list view of stuff
         lv = (ListView) findViewById(R.id.dayListView);
-        
+
         ArrayAdapter<Event> arrayAdapter = new ArrayAdapter<Event>(this,
                 android.R.layout.simple_list_item_1, eventList);
 
@@ -96,6 +96,7 @@ public class MainActivityList extends ActionBarActivity {
             if(id == R.id.refresh) {
                 Intent intent = new Intent(MainActivityList.this, MainActivityList.class);
                 startActivity(intent);
+                finish();
             }
             if (id == R.id.map_view) {
                 Intent intent = new Intent(MainActivityList.this, MainActivity.class);
@@ -107,4 +108,14 @@ public class MainActivityList extends ActionBarActivity {
 
     }
 
+    public void toAdd(View v) {
+        Intent intent = new Intent(MainActivityList.this, CreateEvent.class);
+        startActivityForResult(intent, ActivityTwoRequestCode);
     }
+
+    public void toMap(View v) {
+        Intent intent = new Intent(MainActivityList.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+}

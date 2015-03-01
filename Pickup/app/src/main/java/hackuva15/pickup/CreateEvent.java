@@ -52,6 +52,9 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
 
         MapFragment mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        selectedLocation = new LatLng(
+                getIntent().getDoubleExtra("latitude", 0.0),
+                getIntent().getDoubleExtra("longitude",0.0));
 
         nameInput = (EditText)findViewById(R.id.event_name_input);
 
@@ -109,9 +112,10 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         googleMap.setOnMapLongClickListener(this);
 
         map = googleMap;
-        if (selectedLocation == null) {
+        if (selectedLocation.equals(new LatLng(0,0))) {
             selectedLocation = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
         }
+        map.addMarker(new MarkerOptions().position(selectedLocation));
     }
 
     @Override

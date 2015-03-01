@@ -34,7 +34,7 @@ public class GetListTask extends AsyncTask<Void,Void,ArrayList<Event>> {
     @Override
     protected ArrayList<Event> doInBackground(Void... params) {
         HttpClient client = new DefaultHttpClient();
-        HttpGet request = new HttpGet("http://172.25.89.85:8000/games/game_list");
+        HttpGet request = new HttpGet("http://52.11.31.74/games/game_list");
         String responseText="";
         try {
             HttpResponse response = client.execute(request);
