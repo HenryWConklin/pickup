@@ -6,4 +6,6 @@
     <string name="title_activity_create_event">Create Event</string>
     <string name="event_name">Event Name</string>
     <string name="event_create">Create</string>
+    <string name="event_time">Time</string>
+    <string name="event_date">Date</string>
 </resources>
