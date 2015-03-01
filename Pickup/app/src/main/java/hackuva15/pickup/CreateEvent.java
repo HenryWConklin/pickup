@@ -137,15 +137,15 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
 
         //intent with parcelable latitude/longitude object
         String name = nameInput.getText().toString();
+
         Date beginningTime = date;
-        Date endTime = date;
-        String location = "TODO";//.getText().toString();
         Double latitude = selectedLocation.latitude;
         Double longitude = selectedLocation.longitude;
         String sportType = (String)this.sportType.getSelectedItem();//.getText().toString();
-        String description = "TODO";//.getText().toString();
 
-        Event retEvent = new Event(name, beginningTime, endTime, location, latitude, longitude, sportType, description);
+
+
+        Event retEvent = new Event(name, beginningTime,latitude, longitude, sportType);
         Intent i = new Intent();
 
         i.putExtra("retEvent", retEvent);
@@ -168,7 +168,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
                     calendar.set(
                             datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
                             timePicker.getCurrentHour(), timePicker.getCurrentHour());
-                    date = calendar.getTime();
+                    date = (Date)calendar.getTime();
                     timeInput.setText(date.toString());
                 }
             });

@@ -1,11 +1,13 @@
 package hackuva15.pickup;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -24,6 +26,17 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
@@ -122,15 +135,81 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 if (resultCode == Activity.RESULT_OK) {
                     // TODO Extract the data returned from the child Activity.
                     Event temp = (Event) data.getExtras().get("retEvent");
-                    eventList.add(temp);
+                    Toast.makeText(getApplicationContext(), temp.toString(),
+                            Toast.LENGTH_LONG).show();
+                    //start async task
+                    //final JSONTask task = new JSONTask();
+
+                    String url = "http://239.39.32.23:8000/games/new_game";//MUST ADJUST URL
+                    //task.execute(url);
+
+
+
+
                     Context context = getApplicationContext();
                     int duration = Toast.LENGTH_LONG;
-                    Toast toast = Toast.makeText(context,
-                            temp.getName().toString(), duration);
+                    Toast toast = Toast.makeText(this.getApplicationContext(),
+                            temp.getName(), duration);
                     toast.show();
                 }
                 break;
             }
         }
     }
+
+//    public class JSONTask extends AsyncTask<String, Void, String> {
+//        @Override
+//        protected String doInBackground(String... arg) {
+//            String linha = "";
+//            String retorno = "";
+//            String url = arg[0]; // Added this line
+//
+//            mDialog = ProgressDialog.show(mContext, "Aguarde", "Carregando...", true);
+//
+//            // Cria o cliente de conexão
+//            HttpClient client = new DefaultHttpClient();
+//            HttpGet get = new HttpGet(mUrl);
+//
+//            try {
+//                // Faz a solicitação HTTP
+//                HttpResponse response = client.execute(get);
+//
+//                // Pega o status da solicitação
+//                StatusLine statusLine = response.getStatusLine();
+//                int statusCode = statusLine.getStatusCode();
+//
+//                if (statusCode == 200) { // Ok
+//                    // Pega o retorno
+//                    BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+//
+//                    // Lê o buffer e coloca na variável
+//                    while ((linha = rd.readLine()) != null) {
+//                        retorno += linha;
+//                    }
+//                }
+//            } catch (ClientProtocolException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            return retorno; // This value will be returned to your onPostExecute(result) method
+//        }
+//
+//            @Override
+//            protected void onPostExecute(String result) {
+//                // Create here your JSONObject...
+//                JSONObject json = createJSONObj(result);
+//            customMethod(json); // And then use the json object inside this method
+//            mDialog.dismiss();
+//
+//        }
+//
+//        // You'll have to override this method on your other tasks that extend from this one and use your JSONObject as needed
+//        public abstract customMethod(JSONObject json){
+//            //SEND JSON STUF
+//        }
+//    }
+
+
 }
