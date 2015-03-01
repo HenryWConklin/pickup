@@ -17,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -29,6 +30,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import javax.xml.datatype.Duration;
 
 
 public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, View.OnFocusChangeListener, View.OnClickListener {
@@ -131,11 +134,11 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
     }
 
     public void submit(View v) {
-        if (nameInput.getText().equals("")){
+        if (nameInput.getText().toString().equals("")){
+            Toast toast = Toast.makeText(this, "Please enter a name for your event", Toast.LENGTH_LONG);
+            toast.show();
             nameInput.requestFocus();
-            if (selectedLocation == null) {
 
-            }
             return;
         }
 

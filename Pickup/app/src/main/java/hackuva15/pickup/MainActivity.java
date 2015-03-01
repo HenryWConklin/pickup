@@ -177,8 +177,7 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
                 if (resultCode == Activity.RESULT_OK) {
                     // TODO Extract the data returned from the child Activity.
                     Event temp = (Event) data.getExtras().get("retEvent");
-                    Toast.makeText(getApplicationContext(), temp.toString(),
-                            Toast.LENGTH_LONG).show();
+
                     //start async task
                     //final JSONTask task = new JSONTask();
 
@@ -187,7 +186,10 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
                     PostEventTask task = new PostEventTask();
                     task.execute(temp);
                     try {
-                        Log.wtf("Post Result: ", "" + task.get());
+                        boolean result = task.get();
+                        if (!result) {
+                            Toast.makeText(this, "Server error, try again later",Toast.LENGTH_LONG).show();
+                        }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {

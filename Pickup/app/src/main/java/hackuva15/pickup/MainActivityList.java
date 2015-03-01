@@ -1,6 +1,8 @@
 package hackuva15.pickup;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,9 +48,9 @@ public class MainActivityList extends ActionBarActivity {
 //                R.layout.listview_item_row, eventListArray);
 
         // add stuff to list view
-        eventList.add(new Event());
-        eventList.add(new Event());
-        eventList.add(new Event());
+//        eventList.add(new Event());
+//        eventList.add(new Event());
+//        eventList.add(new Event());
         refresh();
         Collections.sort(eventList, new TimeComparator());
         //sortByLocation();
@@ -108,9 +111,45 @@ public class MainActivityList extends ActionBarActivity {
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case (ActivityTwoRequestCode): {
+                if (resultCode == Activity.RESULT_OK) {
+
+                    Event temp = (Event) data.getExtras().get("retEvent");
+
+                    //start async task
+                    //final JSONTask task = new JSONTask();
+
+                    //task.execute(url);
+
+                    PostEventTask task = new PostEventTask();
+                    task.execute(temp);
+                    try {
+                        boolean result = task.get();
+                        if (!result) {
+                            Toast.makeText(this, "Server error, try again later", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                    refresh();
+
+
+                }
+                break;
+            }
+        }
+    }
+
     public void toAdd(View v) {
         Intent intent = new Intent(MainActivityList.this, CreateEvent.class);
         startActivityForResult(intent, ActivityTwoRequestCode);
+
     }
 
     public void toMap(View v) {
