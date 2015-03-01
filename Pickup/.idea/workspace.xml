@@ -42,6 +42,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3315">
               <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
               <folding>
@@ -50,6 +51,10 @@
 =======
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2006">
               <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+=======
+            <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="2261">
+              <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
               <folding />
 >>>>>>> cbd58696f1ddb47dc7688bae62033b530a9fb367
             </state>
@@ -60,6 +65,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/CreateEvent.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="2465">
               <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
@@ -68,6 +74,10 @@
 =======
             <state vertical-scroll-proportion="0.0" vertical-offset="2193" max-vertical-offset="3094">
               <caret line="141" column="31" selection-start-line="141" selection-start-column="31" selection-end-line="141" selection-end-column="31" />
+=======
+            <state vertical-scroll-proportion="0.0" vertical-offset="821" max-vertical-offset="3094">
+              <caret line="57" column="47" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
               <folding>
                 <element signature="imports" expanded="true" />
 >>>>>>> cbd58696f1ddb47dc7688bae62033b530a9fb367
@@ -76,9 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Event.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Event.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/Event.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="646">
               <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
@@ -96,6 +107,10 @@
 =======
             <state vertical-scroll-proportion="0.0" vertical-offset="1243" max-vertical-offset="2737">
               <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
+=======
+            <state vertical-scroll-proportion="0.037199125" vertical-offset="221" max-vertical-offset="2737">
+              <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2709#2710#0" expanded="true" />
@@ -140,6 +155,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="activity_create_event.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -208,6 +224,8 @@
           </provider>
         </entry>
       </file>
+=======
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
     </leaf>
   </component>
   <component name="FindManager">
@@ -1450,11 +1468,15 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/CreateEvent.java" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml" />
+=======
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
         <option value="$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/Event.java" />
 >>>>>>> cbd58696f1ddb47dc7688bae62033b530a9fb367
         <option value="$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml" />
       </list>
     </option>
   </component>
@@ -1785,10 +1807,14 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 <<<<<<< HEAD
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3282313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 =======
+=======
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 >>>>>>> cbd58696f1ddb47dc7688bae62033b530a9fb367
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2007,8 +2033,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1054">
           <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
           <folding>
+            <element signature="e#221#256#0" expanded="true" />
+            <element signature="e#282#317#0" expanded="true" />
+            <element signature="e#341#374#0" expanded="true" />
+            <element signature="e#401#434#0" expanded="true" />
             <element signature="e#811#831#0" expanded="true" />
-            <element signature="e#1070#1090#0" expanded="true" />
+            <element signature="e#1069#1089#0" expanded="true" />
+            <element signature="e#2041#2063#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2121,43 +2152,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="833">
-          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="357">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="12" selection-end-column="46" />
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/TimeDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.76" vertical-offset="73" max-vertical-offset="731">
-          <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_time_date.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.666667" vertical-offset="12" max-vertical-offset="544">
           <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
->>>>>>> cbd58696f1ddb47dc7688bae62033b530a9fb367
           <folding />
         </state>
       </provider>
@@ -2166,12 +2164,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-<<<<<<< HEAD
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="289">
-          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-          <folding />
-=======
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.8" vertical-offset="0" max-vertical-offset="442">
           <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
@@ -2179,10 +2171,100 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="357">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="12" selection-end-column="46" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/TimeDialog.java">
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07906977" vertical-offset="0" max-vertical-offset="430">
+          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="-14.666667" vertical-offset="12" max-vertical-offset="544">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+>>>>>>> cbd58696f1ddb47dc7688bae62033b530a9fb367
+=======
+        <state vertical-scroll-proportion="0.595186" vertical-offset="0" max-vertical-offset="578">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2560175" vertical-offset="376" max-vertical-offset="833">
+          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+<<<<<<< HEAD
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="289">
+          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+          <folding />
+=======
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/MainActivity.java">
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="2261">
+          <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/CreateEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2193" max-vertical-offset="3094">
-          <caret line="141" column="31" selection-start-line="141" selection-start-column="31" selection-end-line="141" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="821" max-vertical-offset="3094">
+          <caret line="57" column="47" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5651163" vertical-offset="182" max-vertical-offset="1156">
+          <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+          <folding>
+            <element signature="e#221#256#0" expanded="true" />
+            <element signature="e#282#317#0" expanded="true" />
+            <element signature="e#341#374#0" expanded="true" />
+            <element signature="e#401#434#0" expanded="true" />
+            <element signature="e#811#831#0" expanded="true" />
+            <element signature="e#1069#1089#0" expanded="true" />
+            <element signature="e#2041#2063#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/TimeDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6586433" vertical-offset="175" max-vertical-offset="731">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2193,12 +2275,17 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/Event.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1054">
           <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
           <folding />
 =======
         <state vertical-scroll-proportion="0.0" vertical-offset="1243" max-vertical-offset="2737">
           <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
+=======
+        <state vertical-scroll-proportion="0.037199125" vertical-offset="221" max-vertical-offset="2737">
+          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2709#2710#0" expanded="true" />
@@ -2242,6 +2329,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2006">
@@ -2315,6 +2403,8 @@
 >>>>>>> cbd58696f1ddb47dc7688bae62033b530a9fb367
       </provider>
     </entry>
+=======
+>>>>>>> c3fce56a6f8adf356ea206f33558b2b86e2a5072
   </component>
 </project>
 
