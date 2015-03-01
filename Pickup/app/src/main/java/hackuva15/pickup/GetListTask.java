@@ -51,8 +51,8 @@ public class GetListTask extends AsyncTask<Void,Void,ArrayList<Event>> {
                 Event event = new Event(
                         object.getString("game_name"),
                         new Date(object.getLong("game_time")),
-                        object.getDouble("game_lat"),
-                        object.getDouble("game_lon"),
+                        object.getDouble("game_lati"),
+                        object.getDouble("game_long"),
                         object.getString("sport_type"));
                 events.add(event);
             }

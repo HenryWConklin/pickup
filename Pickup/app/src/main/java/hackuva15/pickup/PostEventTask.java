@@ -26,8 +26,9 @@ public class PostEventTask extends AsyncTask<Event, Void, Boolean> {
         try {
             object.put("game_name", event.getName());
             object.put("game_lati", event.getLatitude());
-            object.put("game_lon", event.getLongitude());
+            object.put("game_long", event.getLongitude());
             object.put("sport_type", event.getSportType());
+            object.put("game_time", event.getBeginningTime().getTime());
 
             post.setEntity(new StringEntity(object.toString()));
 
