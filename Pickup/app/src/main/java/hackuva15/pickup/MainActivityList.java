@@ -10,8 +10,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 
 public class MainActivityList extends ActionBarActivity {
@@ -37,6 +42,10 @@ public class MainActivityList extends ActionBarActivity {
         eventList.add(new Event());
         eventList.add(new Event());
         eventList.add(new Event());
+
+        refresh();
+        lv.setAdapter(arrayAdapter);
+
 
         // update list view
         lv.setAdapter(arrayAdapter);
@@ -84,8 +93,25 @@ public class MainActivityList extends ActionBarActivity {
                 startActivity(intent);
             }
 
+            if(id == R.id.refresh) {
+                Intent intent = new Intent(MainActivityList.this, MainActivityList.class);
+                startActivity(intent);
+            }
+
             return super.onOptionsItemSelected(item);
 
 
+    }
+
+    public void refresh() {
+        GetListTask task = new GetListTask();
+        task.execute();
+        try {
+            eventList.addAll(task.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -91,6 +91,13 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             Intent intent = new Intent(MainActivity.this, CreateEvent.class);
             startActivityForResult(intent, ActivityTwoRequestCode);
         }
+
+        if (id == R.id.refresh) {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+
+
         if (id == R.id.list_view) {
             Intent intent = new Intent(MainActivity.this, MainActivityList.class);
             startActivity(intent);
@@ -104,7 +111,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         GetListTask task = new GetListTask();
         task.execute();
         try {
-            eventList = task.get();
+            eventList.addAll(task.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
