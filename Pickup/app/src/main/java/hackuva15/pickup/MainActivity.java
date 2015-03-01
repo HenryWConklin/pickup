@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -122,7 +123,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             MarkerOptions marker = new MarkerOptions();
             marker = marker.position(new LatLng(e.getLatitude(),e.getLongitude()))
                     .title(e.getName())
-                    .snippet(e.getSportType() + e.getBeginningTime().toString());
+                    .snippet(e.getSportType() + "\n" + e.getBeginningTime().toString());
+            myMap.addMarker(marker);
         }
     }
 
@@ -180,7 +182,14 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
                     PostEventTask task = new PostEventTask();
                     task.execute(temp);
-
+                    try {
+                        Log.wtf("Post Result: ", "" + task.get());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                    refresh();
 
 
                 }

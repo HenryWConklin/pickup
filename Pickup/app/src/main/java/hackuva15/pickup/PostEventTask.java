@@ -1,7 +1,9 @@
 package hackuva15.pickup;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -35,7 +37,8 @@ public class PostEventTask extends AsyncTask<Event, Void, Boolean> {
             post.setHeader("Accept", "application/json");
             post.setHeader("Content-type", "application/json");
 
-            client.execute(post);
+            HttpResponse response = client.execute(post);
+            Log.wtf("POST RESPONSE: ", response.getStatusLine().toString());
         } catch (JSONException e) {
             e.printStackTrace();
             return false;
@@ -44,11 +47,14 @@ public class PostEventTask extends AsyncTask<Event, Void, Boolean> {
             return false;
         } catch (ClientProtocolException e) {
             e.printStackTrace();
+            return false;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
-        finally {
-            return true;
-        }
+
+        Log.wtf("Nothing", "");
+        return true;
+
     }
 }
