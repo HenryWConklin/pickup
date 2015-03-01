@@ -43,7 +43,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 
-public class MainActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
+public class MainActivity extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
     private static final int ActivityTwoRequestCode = 0;
 
@@ -123,7 +123,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             MarkerOptions marker = new MarkerOptions();
             marker = marker.position(new LatLng(e.getLatitude(),e.getLongitude()))
                     .title(e.getName())
-                    .snippet(e.getSportType() + "\n" + e.getBeginningTime().toString());
+                    .snippet(e.getSportType() + "\n" + Utils.getDateString(e.getBeginningTime()));
             myMap.addMarker(marker);
         }
     }

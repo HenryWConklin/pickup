@@ -60,7 +60,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         timeInput.setOnClickListener(this);
 
         date = new Date(System.currentTimeMillis());
-        timeInput.setText(date.toString());
+        timeInput.setText(Utils.getDateString(date));
 
         sportType = (Spinner)findViewById(R.id.event_sport_type_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.event_sport_types, android.R.layout.simple_spinner_item);
@@ -169,7 +169,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
                             datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
                             timePicker.getCurrentHour(), timePicker.getCurrentMinute());
                     date = (Date)calendar.getTime();
-                    timeInput.setText(date.toString());
+                    timeInput.setText(Utils.getDateString(date));
                 }
             });
             d.show();
