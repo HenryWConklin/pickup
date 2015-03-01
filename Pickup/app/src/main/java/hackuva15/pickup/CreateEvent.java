@@ -127,7 +127,13 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
     }
 
     public void submit(View v) {
-        // Submit event
+        if (nameInput.getText().equals("")){
+            nameInput.requestFocus();
+            if (selectedLocation == null) {
+
+            }
+            return;
+        }
 
         //intent with parcelable latitude/longitude object
         String name = nameInput.getText().toString();
@@ -151,7 +157,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) {
-            TimeDialog d = new TimeDialog(this);
+            TimeDialog d = new TimeDialog(this, date.getTime());
             d.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
@@ -161,7 +167,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
 
                     calendar.set(
                             datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
-                            timePicker.getCurrentHour(), timePicker.getCurrentHour());
+                            timePicker.getCurrentHour(), timePicker.getCurrentMinute());
                     date = (Date)calendar.getTime();
                     timeInput.setText(date.toString());
                 }
