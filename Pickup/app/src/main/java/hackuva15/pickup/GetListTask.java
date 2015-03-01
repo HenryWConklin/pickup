@@ -41,7 +41,7 @@ public class GetListTask extends AsyncTask<Void,Void,ArrayList<Event>> {
             BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
             responseText += in.readLine();
         } catch (IOException e) {
-            return null;
+            e.printStackTrace();
         }
         ArrayList<Event> events = new ArrayList<>();
         try {
