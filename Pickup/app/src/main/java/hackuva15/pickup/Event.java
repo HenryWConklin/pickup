@@ -37,6 +37,10 @@ public class Event implements Parcelable {
         this.sportType= sportType;
     }
 
+    public String toString() {
+        return name + beginningTime.toString() + "(" + sportType + ")";
+    }
+
 
 
 

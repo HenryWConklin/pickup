@@ -83,12 +83,18 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+        if (id == R.id.create_event) {
+            Intent intent = new Intent(MainActivity.this, CreateEvent.class);
+            startActivityForResult(intent, ActivityTwoRequestCode);
+        }
+        if (id == R.id.list_view) {
+            Intent intent = new Intent(MainActivity.this, MainActivityList.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
+
     }
 
     // Do pre-display map stuff here
@@ -146,11 +152,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-                    Context context = getApplicationContext();
-                    int duration = Toast.LENGTH_LONG;
-                    Toast toast = Toast.makeText(this.getApplicationContext(),
-                            temp.getName(), duration);
-                    toast.show();
+
                 }
                 break;
             }

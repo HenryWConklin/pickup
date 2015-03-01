@@ -38,6 +38,10 @@
             android:name=".CreateEvent"
             android:label="@string/title_activity_create_event" >
         </activity>
+        <activity
+            android:name=".MainActivityList"
+            android:label="@string/title_activity_main_activity_list" >
+        </activity>
     </application>
 
 </manifest>
