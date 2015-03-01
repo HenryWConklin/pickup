@@ -25,7 +25,7 @@ public class Event implements Parcelable {
         this.latitude = 3.3;
         this.longitude = 2.1;
         this.sportType = "Hackerball";
-        this.description = "THE GAME OF THE CENTURY";
+
     }
 
     public Event(String name, LocalDateTime beginningTime, LocalDateTime endTime, String location, double latitude, double longitude, String sportType, String description) {
@@ -36,7 +36,6 @@ public class Event implements Parcelable {
         this.latitude=latitude;
         this.longitude=longitude;
         this.sportType= sportType;
-        this.description =description;
     }
 
 

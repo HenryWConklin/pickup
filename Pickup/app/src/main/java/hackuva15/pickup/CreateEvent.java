@@ -127,7 +127,7 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         // Submit event
 
         //intent with parcelable latitude/longitude object
-        String name = __.getText().toString();
+        String name = nameInput.getText().toString();
         String beginningTime = LocalDateTime.of();
         String endTime = LocalDateTime.of();
         String location = __.getText().toString();

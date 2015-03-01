@@ -112,7 +112,16 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 if (resultCode == Activity.RESULT_OK) {
                     // TODO Extract the data returned from the child Activity.
                     Event temp = (Event) data.getExtras().get("retEvent");
-                    eventList.add(temp);
+
+                    //start async task
+                    YourClassExtendingJSONTask task = new YourClassExtendingJSONTask();
+
+                    String url;//MUST ADJUST URL
+                    task.execute(url);
+
+
+
+
                     Context context = getApplicationContext();
                     int duration = Toast.LENGTH_LONG;
                     Toast toast = Toast.makeText(context,
@@ -123,4 +132,58 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
+
+    public abstract class JSONTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... arg) {
+            String linha = "";
+            String retorno = "";
+            String url = arg[0]; // Added this line
+
+            mDialog = ProgressDialog.show(mContext, "Aguarde", "Carregando...", true);
+
+            // Cria o cliente de conexão
+            HttpClient client = new DefaultHttpClient();
+            HttpGet get = new HttpGet(mUrl);
+
+            try {
+                // Faz a solicitação HTTP
+                HttpResponse response = client.execute(get);
+
+                // Pega o status da solicitação
+                StatusLine statusLine = response.getStatusLine();
+                int statusCode = statusLine.getStatusCode();
+
+                if (statusCode == 200) { // Ok
+                    // Pega o retorno
+                    BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+
+                    // Lê o buffer e coloca na variável
+                    while ((linha = rd.readLine()) != null) {
+                        retorno += linha;
+                    }
+                }
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return retorno; // This value will be returned to your onPostExecute(result) method
+        }
+
+            @Override
+            protected void onPostExecute(String result) {
+                // Create here your JSONObject...
+                JSONObject json = createJSONObj(result);
+            customMethod(json); // And then use the json object inside this method
+            mDialog.dismiss();
+
+        }
+
+        // You'll have to override this method on your other tasks that extend from this one and use your JSONObject as needed
+        public abstract customMethod(JSONObject json);
+    }
+
+
 }
