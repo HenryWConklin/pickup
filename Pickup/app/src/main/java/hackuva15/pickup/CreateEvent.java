@@ -1,5 +1,7 @@
 package hackuva15.pickup;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -10,8 +12,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -22,12 +27,19 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Calendar;
+import java.util.Date;
 
-public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, TextView.OnEditorActionListener {
+
+public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, View.OnFocusChangeListener {
 
     EditText nameInput;
+    EditText timeInput;
     GoogleMap map;
+
     LatLng selectedLocation;
+    Date date;
+
     GoogleApiClient apiClient;
 
     @Override
@@ -41,7 +53,11 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         nameInput = (EditText)findViewById(R.id.event_name_input);
-        nameInput.setOnEditorActionListener(this);
+
+        timeInput = (EditText)findViewById(R.id.event_time_input);
+        timeInput.setOnFocusChangeListener(this);
+
+        date = new Date(System.currentTimeMillis());
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -107,15 +123,6 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         onMapClick(latLng);
     }
 
-    @Override
-    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if (actionId == EditorInfo.IME_ACTION_DONE) {
-            submit(v);
-            return true;
-        }
-        return false;
-    }
-
     public void submit(View v) {
         // Submit event
 
@@ -136,5 +143,27 @@ public class CreateEvent extends ActionBarActivity implements OnMapReadyCallback
         setResult(Activit.RESULT_OK, i);
         finish();
 
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+            TimeDialog d = new TimeDialog(this);
+            d.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    DatePicker datePicker = (DatePicker) ((Dialog)dialog).findViewById(R.id.event_date_picker);
+                    TimePicker timePicker = (TimePicker) ((Dialog)dialog).findViewById(R.id.event_time_picker);
+                    Calendar calendar = Calendar.getInstance();
+
+                    calendar.set(
+                            datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
+                            timePicker.getCurrentHour(), timePicker.getCurrentHour());
+                    date = calendar.getTime();
+                    timeInput.setText(date.toString());
+                }
+            });
+            d.show();
+        }
     }
 }
