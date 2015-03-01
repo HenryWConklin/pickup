@@ -76,8 +76,8 @@
       <file leaf-file-name="Event.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/Event.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5282486" vertical-offset="0" max-vertical-offset="1360">
-              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.24011299" vertical-offset="0" max-vertical-offset="1360">
+              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -1504,8 +1504,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hackuva15/pickup/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5282486" vertical-offset="0" max-vertical-offset="1360">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.24011299" vertical-offset="0" max-vertical-offset="1360">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
           <folding />
         </state>
       </provider>
