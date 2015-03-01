@@ -1,6 +1,7 @@
 package hackuva15.pickup;
 
 import android.content.Intent;
+import android.location.LocationListener;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.TreeMap;
 import java.util.concurrent.ExecutionException;
 
 
@@ -29,6 +31,7 @@ public class MainActivityList extends ActionBarActivity {
         setContentView(R.layout.activity_main_activity_list);
 
         eventList = new ArrayList<Event>();
+
 
 
         // create a list view of stuff
@@ -50,7 +53,9 @@ public class MainActivityList extends ActionBarActivity {
         eventList.add(new Event());
         refresh();
         Collections.sort(eventList, new TimeComparator());
-        //sortByLocation();
+
+        GPSTracker tracker = new GPSTracker(this.getApplicationContext());
+        eventList = sortByLocation(eventList, tracker.getLatitude(), tracker.getLongitude());
 
         // update list view
 //        eventListArray = new Event[eventList.size()];
@@ -105,6 +110,28 @@ public class MainActivityList extends ActionBarActivity {
             return super.onOptionsItemSelected(item);
 
 
+    }
+
+    public static ArrayList<Event> sortByLocation(ArrayList<Event> eventList,double latitude, double longitude) {
+        TreeMap<Double, Event> tMap = new TreeMap<Double, Event>();
+        ArrayList<Event> ret = new ArrayList<Event>();
+        for(int i = 0; i < eventList.size(); i++) {
+            Event temp = eventList.get(i);
+            Double latDiff = latitude - temp.getLatitude();
+            Double longDiff = longitude - temp.getLongitude();
+
+            Double distance = Math.sqrt(latDiff * latDiff + longDiff * longDiff);
+
+            tMap.put(distance, temp);
+        }
+
+        for(Event e: tMap.values()) {
+            ret.add(tMap.get(e));
+        }
+        //reverse so that the least distance is first
+        Collections.reverse(ret);
+
+        return ret;
     }
 
     }
