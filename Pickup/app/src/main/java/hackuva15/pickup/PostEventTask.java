@@ -16,7 +16,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * Created by Henry on 2/28/2015.
  */
-public class PostEventTask extends AsyncTask<Event, Integer, Boolean> {
+public class PostEventTask extends AsyncTask<Event, Void, Boolean> {
     @Override
     protected Boolean doInBackground(Event... params) {
         Event event = params[0];

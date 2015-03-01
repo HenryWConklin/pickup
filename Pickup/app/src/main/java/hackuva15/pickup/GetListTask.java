@@ -28,11 +28,11 @@ import java.util.Date;
 /**
  * Created by Henry on 2/28/2015.
  */
-public class GetListTask extends AsyncTask<Integer,Integer,ArrayList<Event>> {
+public class GetListTask extends AsyncTask<Void,Void,ArrayList<Event>> {
 
 
     @Override
-    protected ArrayList<Event> doInBackground(Integer... params) {
+    protected ArrayList<Event> doInBackground(Void... params) {
         HttpClient client = new DefaultHttpClient();
         HttpGet request = new HttpGet("http://172.25.89.85:8000/games/game_list");
         String responseText="";
