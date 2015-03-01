@@ -1,5 +1,7 @@
 package hackuva15.pickup;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
@@ -9,6 +11,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -21,11 +24,17 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
+    private static final int ActivityTwoRequestCode = 0;
+
     private GoogleApiClient apiClient;
     private GoogleMap myMap;
+
+    ArrayList<Event> eventList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +45,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         MapFragment mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        eventList = new ArrayList<>();
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -97,7 +108,6 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = new Intent(MainActivity.this, CreateEvent.class);
         startActivityForResult(intent, ActivityTwoRequestCode);
 
-        myMap.addMarker(new MarkerOptions().position(latLng).title("Sports!"));
     }
 
     /**
