@@ -8,6 +8,10 @@
 # Java class files
 *.class
 
+# Python byte code
+*.pyc
+
+
 # Generated files
 bin/
 gen/
@@ -24,3 +28,5 @@ proguard/
 
 # Log Files
 *.log
+
+*.sqlite3
