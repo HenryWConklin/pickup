@@ -8,6 +8,12 @@
 # Java class files
 *.class
 
+# Python byte code
+*.pyc
+
+# django migrated files
+migrations/
+
 # Generated files
 bin/
 gen/
