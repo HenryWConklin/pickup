@@ -15,9 +15,11 @@ public class Utils {
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-
+        int hour = cal.get(Calendar.HOUR);
+        if (hour == 0)
+            hour = 12;
         String res=String.format("%d:%02d %s",
-                cal.get(Calendar.HOUR),
+                hour,
                 cal.get(Calendar.MINUTE),
                 (cal.get(Calendar.AM_PM)==Calendar.AM?"AM":"PM"));
 
@@ -32,10 +34,10 @@ public class Utils {
                     cal.get(Calendar.DATE));
         }
         else {
-            res += String.format(" %s %d, %s",
+            res += String.format(" %s %d, %d",
                     cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()),
                     cal.get(Calendar.DATE),
-                    cal.getDisplayName(Calendar.YEAR, Calendar.LONG, Locale.getDefault())
+                    cal.get(Calendar.YEAR)
                     );
         }
         return res;

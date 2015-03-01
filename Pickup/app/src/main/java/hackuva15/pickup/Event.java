@@ -38,7 +38,7 @@ public class Event implements Parcelable {
     }
 
     public String toString() {
-        return name + beginningTime.toString() + "(" + sportType + ")";
+        return name + " " + Utils.getDateString(beginningTime) + " (" + sportType + ")";
     }
 
 
